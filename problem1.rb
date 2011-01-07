@@ -1,5 +1,5 @@
-sum = 0
-(1..999).each do |num|
-  sum += num if num % 3 == 0 || num % 5 == 0
+result = (1..999).reduce(0) do |sum, element|
+  sum += element if element % 3 == 0 || element % 5 == 0
+  sum
 end
-puts sum
+puts result

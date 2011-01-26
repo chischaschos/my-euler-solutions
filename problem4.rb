@@ -11,7 +11,7 @@ def combinations_from(range1, range2)
       nums << counter1 * counter2 if palindrome?(counter1 * counter2)
     end
   end
-  nums
+  nums.max
 end
 
 range = 2..999

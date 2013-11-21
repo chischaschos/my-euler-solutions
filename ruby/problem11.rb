@@ -26,6 +26,7 @@ def values elements, row_mover, column_mover
   row = 1
   line = []
   4.times do |index|
+    debugger if column_mover.nil?
     element = value elements, row_mover.(index), column_mover.(index)
     row *= element
     line << element
@@ -50,9 +51,9 @@ def max_line numbers
 
       right_sum, right_line = values numbers, ->(index){index}, ->(index){column + index}
 
-      diagonal_sum, diagonal_line = values numbers, ->(index){row + index - 2}, ->(index){column + index - 2}
+      diagonal_sum, diagonal_line = values numbers, ->(index){row + index}, ->(index){column - index}
 
-      inv_diagonal_sum, inv_diagonal_line = values numbers, ->(index){row + index + 2}, ->(index){column + index - 2}
+      inv_diagonal_sum, inv_diagonal_line = values numbers, ->(index){row + index}, ->(index){column + index}
 
       result < up_sum && (result = up_sum) && line = up_line
       result < down_sum && (result = down_sum) && line = down_line
